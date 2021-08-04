@@ -2,13 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dotnet-app-deployment-master
+  namespace: kubernetes-cluster-devanshugoyal
   labels:
     app: dotnet-app-master
 spec: 
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
         app: dotnet-app-master
+        template:
     metadata:
         labels:
           app: dotnet-app-master
