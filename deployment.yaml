@@ -33,6 +33,6 @@ spec:
        app: dotnet-app-master
    ports:
       - protocol: TCP
-        nodePort: 30150
+        nodePort: 30157
         port: 80
         targetPort: 80
