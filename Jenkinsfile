@@ -13,9 +13,7 @@ pipeline {
        credentials_id = 'TestJenkinsApi'
     }
     
-    tools {
-	   msbuild 'MSBuild'
-	  }
+   
 
     
     options {
