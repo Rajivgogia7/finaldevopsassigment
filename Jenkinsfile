@@ -152,7 +152,7 @@ bat 'dotnet test WebApplication4\\WebApplication4.csproj --logger "trx;LogFileNa
 	    stage('Kubernetes Deployment') {
 			steps {
 				echo "Deploying to Kubernetes"
-				bat "gcloud auth activate-service-account --key-file=TestJenkinsApi"
+				bat "gcloud auth activate-service-account --key-file=newkey.json"
 				bat "kubectl apply -f deployment.yaml"
 				
 			}
