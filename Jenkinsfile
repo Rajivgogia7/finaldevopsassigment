@@ -67,12 +67,10 @@ bat 'dotnet test WebApplication4\\WebApplication4.csproj --logger "trx;LogFileNa
 }
         stage('Code build') {
             steps {
-		// Cleans the output of a project
-                echo "Clean previous build"
+                echo "Clean"
                 bat 'dotnet clean WebApplication4\\WebApplication4.csproj'   
 				
-		// Builds the project and its dependencies
-		echo "Start Building code"
+		echo "Start Building"
 		bat 'dotnet build WebApplication4\\WebApplication4.csproj -c Release -o WebApplication4/app/build'
             }
         }
@@ -144,7 +142,7 @@ bat 'dotnet test WebApplication4\\WebApplication4.csproj --logger "trx;LogFileNa
 		
 		stage('Docker Deployment') {
 			steps {
-				echo "Docker Deployment"
+				echo "Docker Deployment started"
 				bat "docker run --name c-${username1}-${BRANCH_NAME} -d -p ${docker_port}:80 ${registry}:${BUILD_NUMBER}"
 			}
 		}
