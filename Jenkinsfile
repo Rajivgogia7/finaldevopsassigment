@@ -155,7 +155,7 @@ bat 'dotnet test WebApplication4\\WebApplication4.csproj --logger "trx;LogFileNa
 				//withCredentials([file(credentialsId:'Jenkinssecretkey', variable: 'GC_KEY')]) {
 				//bat "gcloud auth activate-service-account --key-file=${GC_KEY}"
 				bat "kubectl apply -f deployment.yaml"
-				}
+				//}
 				
 				
 			}
