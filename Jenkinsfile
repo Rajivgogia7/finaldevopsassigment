@@ -144,7 +144,7 @@ bat 'dotnet test WebApplication4\\WebApplication4.csproj --logger "trx;LogFileNa
 		stage('Docker Deployment') {
 			steps {
 				echo "Docker Deployment"
-				bat "docker run --name c-${username}-${BRANCH_NAME} -d -p ${docker_port}:80 ${registry}:${BUILD_NUMBER}"
+				bat "docker run --name c-$devanshugoyal1-${BRANCH_NAME} -d -p ${docker_port}:80 ${registry}:${BUILD_NUMBER}"
 			}
 		}
 	    
