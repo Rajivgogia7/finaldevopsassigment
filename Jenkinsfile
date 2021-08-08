@@ -137,8 +137,8 @@ pipeline {
 	    stage('Kubernetes Deployment') {
 			steps {
 				echo "Deploying to Kubernetes"
-				bat "gcloud auth activate-service-account 748722217073-compute@developer.gserviceaccount.com --key-file=testjenkinsapi-321513-9b84283b4f64.json"
-	                        bat "kubectl apply -f deployment.yaml"
+				withCredentials([file(credentialsId: 'TestJenkinsApi', variable: 'GC_KEY')]) {  bat "kubectl apply -f deployment.yaml" }
+	                       
 				
 				
 				
