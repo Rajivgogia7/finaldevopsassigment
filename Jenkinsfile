@@ -4,7 +4,6 @@ pipeline {
     environment {
         scannerHome = tool name: 'sonar_scanner_dotnet'
          username = 'devanshugoyal'
-	    username1 = 'devanshugoyal1'
 		registry = 'devanshu123/devanshugoyal'
         docker_port = "${env.BRANCH_NAME == "master" ? "7200" : "7300"}"
 	CONTAINER_ID = null
@@ -143,7 +142,7 @@ bat 'dotnet test WebApplication4\\WebApplication4.csproj --logger "trx;LogFileNa
 		stage('Docker Deployment') {
 			steps {
 				echo "Docker Deployment started"
-				bat "docker run --name c-${username1}-${BRANCH_NAME} -d -p ${docker_port}:80 ${registry}:${BUILD_NUMBER}"
+				bat "docker run --name c-${username}-${BRANCH_NAME} -d -p ${docker_port}:80 ${registry}:${BUILD_NUMBER}"
 			}
 		}
 	    
