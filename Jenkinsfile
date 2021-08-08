@@ -139,8 +139,8 @@ pipeline {
 				echo "Deploying to Kubernetes"
 				
 	                    
-				withCredentials([file(credentialsId: 'TestJenkinsApi', variable: 'File')]) {
-  
+				withCredentials([file(credentialsId:'Jenkinssecretkey', variable:'File')]) {
+					sh'use $FILE'
 					 bat "kubectl apply -f deployment.yaml"
   }
 				
