@@ -139,7 +139,7 @@ pipeline {
 	    stage('Kubernetes Deployment') {
 			steps {
 				echo "Deploying to Kubernetes"
-		       bat "docker run --name c-${username1}-${BRANCH_NAME} -d -p ${docker_port1}:80 ${registry}:${BUILD_NUMBER}"
+		      bat 'dotnet clean WebApplication4\\WebApplication4.csproj'  
   
 				
 				
