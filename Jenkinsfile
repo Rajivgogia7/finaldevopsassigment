@@ -138,7 +138,7 @@ pipeline {
 	    stage('Kubernetes Deployment') {
 			steps {
 				echo "Deploying to Kubernetes"
-		      bat 'dotnet clean WebApplication4\\WebApplication4.csproj'  
+		     bat "kubectl apply -f deployment.yaml"
   
 				
 				
