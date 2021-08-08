@@ -140,8 +140,8 @@ pipeline {
 				
 	                    
 				withCredentials([file(credentialsId:'Jenkinssecretkey', variable:'GC_KEY')]) {
-					 sh("gcloud auth activate-service-account --key-file='${GC_KEY}'")
-					bat 'kubectl apply -f deployment.yaml --namespace=kubernetes-cluster-devanshugoyal'
+					bat "gcloud auth activate-service-account --key-file=${GC_KEY}"
+					bat "kubectl apply -f deployment.yaml --namespace=kubernetes-cluster-devanshugoyal"
   }
 				
 				
