@@ -7,7 +7,6 @@ pipeline {
 	    username1 = 'devanshugoyal1'
 		registry = 'devanshu123/devanshugoyal'
         docker_port = "${env.BRANCH_NAME == "master" ? "7200" : "7300"}"
-	    docker_port= '7500'
 	CONTAINER_ID = null
 	project_id = 'testjenkinsapi-321513'
        cluster_name = 'dotnet-api'
