@@ -4,7 +4,6 @@ pipeline {
     environment {
         scannerHome = tool name: 'sonar_scanner_dotnet'
          username = 'devanshugoyal'
-	    username1 = 'devanshugoyal1'
 		registry = 'devanshu123/devanshugoyal'
         docker_port = "${env.BRANCH_NAME == "master" ? "7200" : "7300"}"
 	CONTAINER_ID = null
