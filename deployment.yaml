@@ -10,22 +10,37 @@ spec:
   selector:
     matchLabels:
         app: dotnet-app-master
-        template:
+  template:
     metadata:
         labels:
-          app: dotnet-app-master
+            app: dotnet-app-master
     spec:
       containers:
         - name: dotnet-app-master
-          image: devanshu123/devanshugoyal-master:latest
+          image: devanshu123/devanshugoyal:latest
           ports:
             -  name: http
                containerPort: 80
                protocol: TCP
 ---
 apiVersion: v1
+kind: Service
+metadata: 
+    name: dotnet-app-master
+    namespace: kubernetes-cluster-devanshugoyal
+spec: 
+   type: NodePort
+   selector:
+       app: dotnet-app-master
+   ports:
+      - protocol: TCP
+        nodePort: 30157
+        port: 80
+        targetPort: 80
+---
+apiVersion: v1
 kind: Namespace
 metadata:
-    name: kubernetes-cluster-devanshugoyal
-    labels:
-        name: kubernetes-cluster
+  name: kubernetes-cluster-devanshugoyal
+  labels:
+        name: kubernetes-cluster-devanshugoyal
