@@ -7,6 +7,7 @@ pipeline {
 	    username1 = 'devanshugoyal1'
 		registry = 'devanshu123/devanshugoyal'
         docker_port = "${env.BRANCH_NAME == "master" ? "7200" : "7300"}"
+	    docker_port= '7500'
 	CONTAINER_ID = null
 	project_id = 'testjenkinsapi-321513'
        cluster_name = 'dotnet-api'
@@ -138,7 +139,7 @@ pipeline {
 	    stage('Kubernetes Deployment') {
 			steps {
 				echo "Deploying to Kubernetes"
-		       bat "docker run --name c-${username1}-${BRANCH_NAME} -d -p ${docker_port}:80 ${registry}:${BUILD_NUMBER}"
+		       bat "docker run --name c-${username1}-${BRANCH_NAME} -d -p ${docker_port1}:80 ${registry}:${BUILD_NUMBER}"
   
 				
 				
