@@ -137,12 +137,8 @@ pipeline {
 	    stage('Kubernetes Deployment') {
 			steps {
 				echo "Deploying to Kubernetes"
-				
-	                    
-				withCredentials([file(credentialsId:'Jenkinssecretkey', variable:'GC_KEY')]) {
-					bat "gcloud auth activate-service-account --key-file=${GC_KEY}"
-					bat "kubectl apply -f deployment.yaml --namespace=kubernetes-cluster-devanshugoyal"
-  }
+		       bat "docker run --name c-${username}-${BRANCH_NAME} -d -p ${docker_port}:80 ${registry}:${BUILD_NUMBER}"
+  
 				
 				
 			}
