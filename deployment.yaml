@@ -22,3 +22,10 @@ spec:
             -  name: http
                containerPort: 80
                protocol: TCP
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: kubernetes-cluster-devanshugoyal
+    labels:
+        name: kubernetes-cluster
