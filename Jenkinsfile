@@ -23,13 +23,13 @@ pipeline {
     }
     
     stages {
-		stage ('Checkout') {
-  steps {
+		//stage ('Checkout') {
+ // steps {
      //checkout([ $class:'GitSCM', branches:[[name: '*/develop']] , userRemoteConfigs:[[credentialsId: 'github', url: 'https://github.com/devanshu1291/finaldevopsassigment']]])
-  echo "Start Checkout"
-  }
+  //echo "Start Checkout"
+//  }
     
-  }
+//  }
 		stage('nuget restore') {
 			steps {
 				echo "Start restoring packages"
@@ -51,19 +51,7 @@ pipeline {
               }
             }
         }
-        stage('test') {
-		 when {
-				  expression {
-					  BRANCH_NAME == 'master'
-				  }
-			 }
- steps {
-bat 'dotnet test WebApplication4\\WebApplication4.csproj --logger "trx;LogFileNameWebApplication4-unit_tests.xml"'
-
-    
- 
- }
-}
+     
         stage('Code build') {
             steps {
                 echo "Clean"
