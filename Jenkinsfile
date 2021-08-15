@@ -141,7 +141,6 @@ pipeline {
 			steps {
 				echo "Deploying to Kubernetes"
 				powershell "(Get-Content deployment.yaml).Replace('{{deployment}}', '${deployment_name}').Replace('{{service}}', '${service_name}').Replace('{{port}}', '${k8_port}') | set-content deployment.yaml"
-				bat "gcloud auth activate-service-account --key-file=key.json"
 		                bat "kubectl apply -f deployment.yaml"
   
 				
