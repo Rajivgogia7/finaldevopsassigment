@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dotnet-app-master-deployment
+  name: {{deployment}}
   namespace: kubernetes-cluster-devanshugoyal
   labels:
     app: dotnet-app-master
@@ -26,7 +26,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata: 
-    name: dotnet-app-master
+    name: {{service}}
     namespace: kubernetes-cluster-devanshugoyal
 spec: 
    type: NodePort
@@ -34,7 +34,7 @@ spec:
        app: dotnet-app-master
    ports:
       - protocol: TCP
-        nodePort: 30157
+        nodePort: {{port}}
         port: 80
         targetPort: 80
 ---
