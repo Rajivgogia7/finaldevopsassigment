@@ -138,7 +138,7 @@ pipeline {
 	    stage('Kubernetes Deployment') {
 			steps {
 				echo "Deploying to Kubernetes"
-				stage('Kubernetes Deployment'){
+			
 
 bat " gcloud auth activate-service-account --key-file=key.json"
 bat "gcloud container clusters get-credentials autopilot-cluster-1 --zone us-central1 --project testjenkinsapi-321513"
