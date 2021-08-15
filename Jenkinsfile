@@ -6,11 +6,14 @@ pipeline {
          username = 'devanshugoyal'
 		registry = 'devanshu123/devanshugoyal'
         docker_port = "${env.BRANCH_NAME == "master" ? "7200" : "7300"}"
+	    k8_port = "${env.BRANCH_NAME == "master" ? "30157" : "30158"}"
 	CONTAINER_ID = null
 	project_id = 'testjenkinsapi-321513'
        cluster_name = 'dotnet-api'
        location = 'us-central1-c'
        credentials_id = 'TestJenkinsApi'
+	    deployment_name = "app-${username}-${BRANCH_NAME}-deployment"
+	service_name = "app-${username}-${BRANCH_NAME}-service"
     }
     
    
@@ -137,6 +140,7 @@ pipeline {
 	    stage('Kubernetes Deployment') {
 			steps {
 				echo "Deploying to Kubernetes"
+				powershell "(Get-Content deployment.yaml).Replace('{{deployment}}', '${deployment_name}').Replace('{{service}}', '${service_name}').Replace('{{port}}', '${k8_port}') | set-content deployment.yaml"
 				bat "gcloud auth activate-service-account --key-file=key.json"
 		                bat "kubectl apply -f deployment.yaml"
   
